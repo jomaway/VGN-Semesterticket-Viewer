@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         if (imgDecodableString != null) {
             setTicketImage();
         } else {
-            showSelectTicketBtn();
+            showSelectTicketBtn(true);
         }
     }
 
@@ -70,9 +70,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void showSelectTicketBtn() {
+    private void showSelectTicketBtn(Boolean shouldBeVisible) {
         Button button = (Button) findViewById(R.id.btn_selectTicket);
-        button.setVisibility(View.VISIBLE);
+        if (shouldBeVisible) {
+            button.setVisibility(View.VISIBLE);
+        } else {
+            button.setVisibility(View.GONE);
+        }
     }
 
     // gets called on a click to the button
@@ -159,9 +163,8 @@ public class MainActivity extends AppCompatActivity {
 
                 //set the Image to the ImageView
                 setTicketImage();
-
-                Button button = (Button) findViewById(R.id.btn_selectTicket);
-                button.setVisibility(View.GONE);
+                // hide the Button
+                showSelectTicketBtn(false);
             } else {
                 Toast.makeText(this, R.string.toast_noImageSelected, Toast.LENGTH_SHORT).show();
             }
