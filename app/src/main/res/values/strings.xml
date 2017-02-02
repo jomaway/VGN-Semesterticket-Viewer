@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Semesterticket</string>
+    <string name="selectTicket">Wähle Ticket</string>
+    <string name="toast_noImageSelected">Du hast kein Bild ausgewählt</string>
+    <string name="toast_error">Upps, etwas ist schief gelaufen!</string>
+    <string name="toast_noPermissionGrantedFromUser">Ohne Berechtigung funktioniert diese App nicht!</string>
+</resources>
