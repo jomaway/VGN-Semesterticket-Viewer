@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context="de.jomaway.semesterticket.MainActivity">
+
+    <Button
+        android:id="@+id/btn_selectTicket"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/selectTicket"
+        android:onClick="selectTicket"
+        android:background="@color/colorAccent"
+        android:padding="@dimen/select_btn_padding"
+        android:visibility="gone"
+        />
+    <ScrollView
+        android:id="@+id/ticketScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <ImageView
+            android:id="@+id/ticketImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            />
+    </ScrollView>
+
+
+</RelativeLayout>
