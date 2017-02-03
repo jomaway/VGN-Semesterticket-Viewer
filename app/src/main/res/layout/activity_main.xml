@@ -4,8 +4,18 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
+    android:background="@color/background"
     tools:context="de.jomaway.semesterticket.MainActivity">
+
+    <TextView
+        android:id="@+id/info_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/info_firstStart"
+        android:padding="@dimen/infoText_padding"
+        android:textAlignment="center"
+        android:visibility="gone"
+        />
 
     <Button
         android:id="@+id/btn_selectTicket"

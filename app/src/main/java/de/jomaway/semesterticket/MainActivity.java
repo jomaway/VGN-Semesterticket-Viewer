@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -25,6 +26,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -72,10 +74,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void showSelectTicketBtn(Boolean shouldBeVisible) {
         Button button = (Button) findViewById(R.id.btn_selectTicket);
+        TextView infoText = (TextView) findViewById(R.id.info_textView);
         if (shouldBeVisible) {
             button.setVisibility(View.VISIBLE);
+            infoText.setVisibility(View.VISIBLE);
         } else {
             button.setVisibility(View.GONE);
+            infoText.setVisibility(View.GONE);
         }
     }
 
@@ -102,11 +107,20 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG,"needs to show permission dialog");
 
             //TODO: show dialog box async and then make the request after user interaction
+            makePermissionRequest();
 
         } else {
             // no explanation needed, we can request the permission
             makePermissionRequest();
         }
+    }
+
+    // Function to show an Dialog Box for with Information why Read Storage Permission are needed
+    private void showExplanationForPermissionDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.permissionDialog_text)
+                .setTitle(R.string.permissionDialog_title);
+        AlertDialog dialog = builder.create();
     }
 
     // Function makes the request for the permission
@@ -134,6 +148,9 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Log.i(TAG,"Permission was NOT granted");
                     Toast.makeText(this, R.string.toast_noPermissionGrantedFromUser, Toast.LENGTH_SHORT).show();
+                    TextView infoText = (TextView) findViewById(R.id.info_textView);
+                    infoText.setText(R.string.permissionDialog_text);
+                    infoText.setTextColor(getResources().getColor(R.color.warningText));
                 }
             }
         }
