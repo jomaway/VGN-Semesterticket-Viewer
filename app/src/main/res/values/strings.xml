@@ -7,5 +7,7 @@
     <string name="info_firstStart">Hallo, lade dein Semesterticket auf dein Handy und wähle es dann über einen Klick auf diesen Button aus.</string>
     <string name="permissionDialog_title">Warum sind diese Rechte nötig?</string>
     <string name="permissionDialog_text">Um das Bild des Semestertickets laden zu können,
-        braucht die App die Rechte um auf den Speicher des Gerätes zugreifen zu können. </string>
+        braucht die App Rechte um auf den Speicher des Gerätes zugreifen zu können.</string>
+    <string name="editDialog_title">Ändere Ticket</string>
+    <string name="editDialog_text">Wollen sie ein neues Ticket auswählen?</string>
 </resources>

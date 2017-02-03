@@ -2,6 +2,7 @@ package de.jomaway.semesterticket;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_selectTicket:
-                setTicket();
+                showEditTicketDialog();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -121,6 +122,21 @@ public class MainActivity extends AppCompatActivity {
         builder.setMessage(R.string.permissionDialog_text)
                 .setTitle(R.string.permissionDialog_title);
         AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+    private void showEditTicketDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.editDialog_text)
+                .setTitle(R.string.editDialog_title)
+                .setPositiveButton("yes",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        setTicket();
+                    }
+                })
+                .setNegativeButton("no",null);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     // Function makes the request for the permission
@@ -148,9 +164,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Log.i(TAG,"Permission was NOT granted");
                     Toast.makeText(this, R.string.toast_noPermissionGrantedFromUser, Toast.LENGTH_SHORT).show();
-                    TextView infoText = (TextView) findViewById(R.id.info_textView);
-                    infoText.setText(R.string.permissionDialog_text);
-                    infoText.setTextColor(getResources().getColor(R.color.warningText));
+                    showExplanationForPermissionDialog();
                 }
             }
         }
