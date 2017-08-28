@@ -15,14 +15,17 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -51,6 +54,15 @@ public class MainActivity extends AppCompatActivity {
         } else {
             showSelectTicketBtn(true);
         }
+
+        final ImageView ticketImage = (ImageView) findViewById(R.id.ticketImage);
+        ticketImage.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                Log.d(TAG,"view on TOuch");
+                return false;
+            }
+        });
     }
 
     // Add an Menu which shows an Edit button to change the ticket picture
